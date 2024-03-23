@@ -11,7 +11,9 @@
     "server-dev": "npm run dev --prefix server",
     "client": "npm start --prefix client",
     "watch": "npm run server-dev && npm run client",
-    "deploy": "npm run build --prefix server && npm run build --prefix client",
+    "deploy-local": "npm run build-windows --prefix client && npm run build --prefix server && npm start --prefix server",
+    "deploy": "npm run build --prefix server && npm run build-windows --prefix client",
+    "deploy-linux": "npm run build --prefix server && npm run build-linux --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

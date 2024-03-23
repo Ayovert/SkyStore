@@ -27,7 +27,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-windows": "set BUILD_PATH=../server/dist&& react-scripts build",
+    "build-linux": "react-scripts build && cp -r build/. ../server/dist && rm -R build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
