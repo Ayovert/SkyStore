@@ -1,0 +1,70 @@
+.navHeader {
+  position: static;
+  margin: 20px 200px 85px 200px;
+  font-family: "Raleway", sans-serif;
+  @media (max-width: 1200px) { 
+    margin: 0 100px;
+  }
+
+  @media (max-width: 900px) {
+    margin: 0 20px;
+  }
+
+  .subHeader {
+    display: flex;
+    align-items: center;
+    //  margin: 0 100px;
+
+    justify-content: space-between;
+    .homeHeader {
+      padding: 20px;
+      a {
+        text-decoration: none;
+      }
+      .cloudLogo {
+        g {
+          #cloudBack {
+            fill: rgb(42 237 110) !important;
+          }
+          #cloudLeft {
+            fill: rgb(189 255 203) !important;
+          }
+          #cloudRight {
+            fill: rgb(141 243 164) !important;
+          }
+        }
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    .navList {
+      display: flex;
+      flex-direction: row;
+      font-weight: 400;
+
+      .navItem {
+        color: black;
+        text-decoration: none;
+        padding: 0 20px 0 20px;
+        &:hover {
+          color: grey;
+        }
+        &.active {
+          color: rgb(34, 236, 78);
+          border-bottom: 2px solid #36e736;
+          padding-bottom: 30px;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .rightNav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

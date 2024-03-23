@@ -1,0 +1,119 @@
+.productSizeList,
+.productCapacityList,
+.productColorList {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 0.5rem;
+
+  .productSizeBox,
+  .productCapacityBox,
+  .productColorBox {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .productSize,
+    .productCapacity,
+    .productColor {
+      border: 1px solid rgba(0, 0, 0, 0.363);
+      font-size: 20px;
+      width: 4rem;
+      height: 3rem;
+      /* text-align: center; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 10px 10px 0;
+    }
+
+    .productColor {
+      border: none;
+      width: 2rem;
+      height: 2rem;
+      &:hover {
+        box-shadow: 0px 8px 16px 0px rgba(228, 30, 30, 0.2);
+      }
+      .check {
+        border: 2px solid #5ece7b;
+        margin: 0.5rem -0.5rem;
+        padding: 0.7rem;
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    span {
+      font-size: 18px;
+      margin: 5px;
+      width: 100%;
+      text-align: center;
+    }
+
+    input[type="radio"] {
+      appearance: none;
+      background-color: #fff;
+      margin: 0;
+      font: inherit;
+      color: currentColor;
+      width: 3em;
+      height: 3em;
+      border: 0.15em solid currentColor;
+      border-radius: 0;
+      transform: translateY(-0.075em);
+    }
+  }
+}
+
+.productSizeXList,
+.productCapacityXList,
+.productColorXList {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .productSizeBox,
+  .productCapacityBox,
+  .productColorBox {
+    display: flex;
+    align-items: center;
+    margin: 0 3px;
+
+    .productSize,
+    .productCapacity,
+    .productColor {
+      border: 1px solid black;
+      font-size: 1rem;
+
+      /* text-align: center; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 3px 3px 2px 0px;
+      padding: 0.2rem 0.4rem;
+      height: 1.5rem;
+      width: fit-content;
+    }
+
+    .productColor {
+      border: none;
+      width: 1rem;
+      height: 1rem;
+      padding: 3px;
+      .check {
+        border: 2.5px solid #5ece7b;
+        // margin: 5px -5px;
+        padding: 0.5rem 0.9rem 0.7rem 0.8rem;
+        height: 0.6rem;
+        width: 0.6rem;
+      }
+    }
+    span {
+      text-align: center;
+    }
+  }
+}

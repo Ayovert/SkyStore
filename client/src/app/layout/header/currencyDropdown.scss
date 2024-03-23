@@ -1,0 +1,91 @@
+ /*Currency Dropdown*/
+ .currencyDiv {
+    position: relative;
+    display: flex;
+
+    @media (max-width: 1200px) { 
+     .currencyButton{
+      padding: 15px;
+     }
+    }
+    .currencyButton {
+      background-color: inherit;
+      border: none;
+      color: black;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+
+      .currencyArrow {
+        display: inline-block;
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        position: relative;
+        margin: 5px;
+      }
+    }
+
+    .currencyList {
+      ul {
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 99;
+        visibility: hidden;
+        margin-top: 50px;
+        border-radius: 3px;
+        transform: translateY(-2em);
+
+        transition: all 0.3s ease 0s, visibility 0s linear,
+          z-index 0s linear 0.01s;
+
+        list-style: none;
+        padding: 0;
+
+        .currencyListItem {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: center;
+          margin: 10px 0;
+        }
+        & li:hover {
+          background-color: #eeeeee;
+        }
+      }
+    }
+
+    /* div ul > li:hover, &:hover .currencyButton {
+          background-color: rgb(35, 44, 168);
+        }*/
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      .currencyList {
+        ul {
+          opacity: 1;
+          transform: translateY(0);
+          transition-delay: 0s, 0s, 0.3s;
+          visibility: visible;
+        }
+      }
+
+      .currencyButton {
+        .currencyArrow {
+          transform: rotate(-90deg) !important;
+          -webkit-transform: rotate(-90deg) !important;
+          transition: all 0.3s ease 0s;
+          top: -10%;
+        }
+      }
+    }
+  }
+  /*Currency Dropdown*/
