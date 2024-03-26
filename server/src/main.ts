@@ -1,8 +1,8 @@
 
-import express, { Express, Application } from 'express';
+import express, { Express } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import path from 'path';
-import http from 'http';
+
 //import cors from 'cors';
 
 

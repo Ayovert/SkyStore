@@ -1,7 +1,10 @@
 [build]
   command = "npm run every-install && npm run deploy-linux"
   publish = "server/dist"   # Publish directory for the client-side files
+  functions = "server/dist/netlify/functions"  # Path to the serverless functions
 
+
+  
 [build.environment]
   CI = ""
 
@@ -9,3 +12,11 @@
 [functions]
   external_node_modules = ["express"]
   node_bundler = "esbuild"
+
+#https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router 
+
+  [[redirects]]
+  force = true
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
