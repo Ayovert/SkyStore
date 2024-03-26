@@ -1,4 +1,4 @@
-import { Query, QueryResult } from "@apollo/react-components";
+import { Query } from "@apollo/react-components";
 import { PureComponent, ReactNode } from "react";
 import { GET_CURRENCIES } from "../../api/queries";
 import { Currency } from "../../model/Product";
@@ -7,6 +7,7 @@ import "./header.scss";
 import { getCurrency } from "../../util/util";
 import { CurrencyProps, CurrencyState } from "./headerState";
 import "./currencyDropdown.scss";
+import { ApolloQueryResult } from "apollo-boost";
 
 
 
@@ -26,11 +27,14 @@ class CurrencyDropdown extends PureComponent<CurrencyProps> {
     return (
       <>
         <Query query={GET_CURRENCIES} variables={{}}>
-          {({ loading, error, data }: QueryResult) => {
-            if (error) {
-              console.log(error);
-              return <h1>Error...</h1>;
-            }
+          {({ loading, errors, data }: ApolloQueryResult<any>) => {
+            if (errors && errors?.length > 0) {
+              errors.forEach(error => {
+               console.log(error.message);
+           });
+          
+           return <h1>Error...</h1>;
+         }
             if (loading || !data) return <h1>Loading...</h1>;
 
             const currencyData = data.currencies as Currency[];

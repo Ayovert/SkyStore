@@ -1,14 +1,16 @@
 import "./products.scss";
 
 import { GET_CATEGORY } from "../../app/api/queries";
-import { QueryResult } from "@apollo/client";
+
 import { Product } from "../../app/model/Product";
 import { Link } from "react-router-dom";
 import { ReactComponent as CartIcon } from "../../images/cart.svg";
 import { Component } from "react";
 import { Query } from "@apollo/react-components";
+import { ApolloQueryResult } from "apollo-boost";
 import { getProductAttribute } from "../../app/util/util";
 import { ProductProps } from "./productState";
+
 
 
 
@@ -22,9 +24,12 @@ class ProductListPage extends Component<ProductProps> {
           query={GET_CATEGORY}
           variables={{ input: { title: categoryName } }}
         >
-          {({ loading, error, data }: QueryResult) => {
-            if (error) {
-              console.log(error);
+          {({ loading, errors, data }: ApolloQueryResult<any>) => {
+            if (errors && errors?.length > 0) {
+                 errors.forEach(error => {
+                  console.log(error.message);
+              });
+             
               return <h1>Error...</h1>;
             }
             if (loading || !data) return <h1>Loading...</h1>;

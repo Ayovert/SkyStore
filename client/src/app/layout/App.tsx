@@ -8,10 +8,14 @@ import { connect} from "react-redux";
 import { PureComponent } from "react";
 import HeaderComponent from "./header/header";
 import { getCurrency } from "../util/util";
-import { Query, QueryResult } from "@apollo/react-components";
+import { Query} from '@apollo/client/react/components';
+import {  ApolloQueryResult } from "apollo-boost";
+
 import { GET_CATEGORIES } from "../api/queries";
 import { Category } from "../model/Product";
 import { PropRedux, AppState, mapDispatchToProps, mapStateToProps } from "./AppState";
+
+
 
 
 class App extends PureComponent<PropRedux, AppState> {
@@ -32,12 +36,18 @@ class App extends PureComponent<PropRedux, AppState> {
     const { currency } = this.state;
     const { addToCart, cart, removeFromCart} = this.props as any;
 
+    //const result = useQuery(GET_CATEGORIES)
+
+
     return (
       <>
         <Query query={GET_CATEGORIES}>
-          {({ loading, error, data }: QueryResult) => {
-            if (error) {
-              console.log(error);
+          {({ loading, errors, data }: ApolloQueryResult<any>) => {
+            if (errors && errors?.length > 0) {
+                 errors.forEach(error => {
+                  console.log(error.message);
+              });
+             
               return <h1>Error...</h1>;
             }
             if (loading || !data) return <h1>Loading...</h1>;
@@ -118,3 +128,10 @@ class App extends PureComponent<PropRedux, AppState> {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+/**
+ * 
+ * 
+ *   Line 38:38:  React Hook "useQuery" cannot be called in a class component. React Hooks must be called in a React function component or a custom React Hook function  react-hooks/rules-of-hooks
+
+ */

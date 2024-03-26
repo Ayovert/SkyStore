@@ -1,11 +1,12 @@
-import { QueryResult } from "@apollo/client";
-import { Query } from "@apollo/react-components";
+
+
 import { ChangeEvent, Component } from "react";
 import { withRouter } from "react-router-dom";
 import { GET_PRODUCT } from "../../../app/api/queries";
 import "./productDetails.scss";
 import { Product } from "../../../app/model/Product";
-
+import { Query } from "@apollo/react-components";
+import { ApolloQueryResult } from "apollo-boost";
 import {
   getAttribute,
   getCurrency,
@@ -18,6 +19,7 @@ import { coreAttr } from "../../../app/api/data";
 import CartControls from "../../Cart/cartControls";
 import ImageSwitcher from "./ImageSwitcher";
 import { DetailsProps, ProductState } from "../productState";
+
 
 
 class ProductDetails extends Component<DetailsProps, ProductState> {
@@ -65,11 +67,14 @@ class ProductDetails extends Component<DetailsProps, ProductState> {
       return (
         <>
           <Query query={GET_PRODUCT} variables={{ id: id }}>
-            {({ loading, error, data }: QueryResult) => {
-              if (error) {
-                console.log(error);
-                return <h1>Error...</h1>;
-              }
+          {({ loading, errors, data }: ApolloQueryResult<any>) => {
+            if (errors && errors?.length > 0) {
+                 errors.forEach(error => {
+                  console.log(error.message);
+              });
+             
+              return <h1>Error...</h1>;
+            }
               if (loading || !data) return <h1>Loading...</h1>;
 
               const productData = data.product as Product;
