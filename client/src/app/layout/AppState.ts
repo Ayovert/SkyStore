@@ -4,7 +4,7 @@ import { AddtoCart, RemoveFromCart, ClearCart } from "../../features/Cart/cartSl
 import { CartParams } from "../model/Cart";
 import { RootState } from "../redux/store";
 
-interface DispatchProps {
+export interface DispatchProps {
     addToCart: (cartParams: CartParams) => void;
     removeFromCart: (cartParams: CartParams) => void;
     clearCart: (cartParams: CartParams) => void;

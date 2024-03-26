@@ -9,6 +9,7 @@ import { PureComponent } from "react";
 import HeaderComponent from "./header/header";
 import { getCurrency } from "../util/util";
 import { Query} from '@apollo/client/react/components';
+
 import {  ApolloQueryResult } from "apollo-boost";
 
 import { GET_CATEGORIES } from "../api/queries";
@@ -42,9 +43,9 @@ class App extends PureComponent<PropRedux, AppState> {
     return (
       <>
         <Query query={GET_CATEGORIES}>
-          {({ loading, errors, data }: ApolloQueryResult<any>) => {
+          {({ loading, errors, data } : any) => {
             if (errors && errors?.length > 0) {
-                 errors.forEach(error => {
+                 errors.forEach((error:any) => {
                   console.log(error.message);
               });
              
