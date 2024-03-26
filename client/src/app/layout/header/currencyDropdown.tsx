@@ -7,7 +7,6 @@ import "./header.scss";
 import { getCurrency } from "../../util/util";
 import { CurrencyProps, CurrencyState } from "./headerState";
 import "./currencyDropdown.scss";
-import { ApolloQueryResult } from "apollo-boost";
 
 
 
@@ -27,9 +26,9 @@ class CurrencyDropdown extends PureComponent<CurrencyProps> {
     return (
       <>
         <Query query={GET_CURRENCIES} variables={{}}>
-          {({ loading, errors, data }: ApolloQueryResult<any>) => {
+          {({ loading, errors, data }: any) => {
             if (errors && errors?.length > 0) {
-              errors.forEach(error => {
+              errors.forEach((error : any) => {
                console.log(error.message);
            });
           

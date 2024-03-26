@@ -10,7 +10,6 @@ import HeaderComponent from "./header/header";
 import { getCurrency } from "../util/util";
 import { Query} from '@apollo/client/react/components';
 
-import {  ApolloQueryResult } from "apollo-boost";
 
 import { GET_CATEGORIES } from "../api/queries";
 import { Category } from "../model/Product";

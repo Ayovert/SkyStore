@@ -6,7 +6,6 @@ import { GET_PRODUCT } from "../../../app/api/queries";
 import "./productDetails.scss";
 import { Product } from "../../../app/model/Product";
 import { Query } from "@apollo/react-components";
-import { ApolloQueryResult } from "apollo-boost";
 import {
   getAttribute,
   getCurrency,
@@ -67,9 +66,9 @@ class ProductDetails extends Component<DetailsProps, ProductState> {
       return (
         <>
           <Query query={GET_PRODUCT} variables={{ id: id }}>
-          {({ loading, errors, data }: ApolloQueryResult<any>) => {
+          {({ loading, errors, data }: any) => {
             if (errors && errors?.length > 0) {
-                 errors.forEach(error => {
+                 errors.forEach((error : any) => {
                   console.log(error.message);
               });
              
