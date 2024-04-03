@@ -8,14 +8,14 @@
 [build.environment]
   CI = ""
 
+[dev]
+  command = "npm run server-dev"
+
 
 [functions]
-  external_node_modules = ["express"]
-  node_bundler = "esbuild"
+  directory = "server/dist/netlify/functions"
 
-#https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router 
-
-  [[redirects]]
+[[redirects]]
   force = true
   from = "/*"
   to = "/.netlify/functions/api/:splat"
