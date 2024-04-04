@@ -1,6 +1,5 @@
-import { gql } from 'apollo-server-lambda';
 
-const typeDefs = gql`
+const typeDefs = `#graphql
     type Price {
         currency: Currency!,
         amount: Float!
